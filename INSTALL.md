@@ -64,24 +64,3 @@ done
 rm -rf "$TMP_DIR"
 echo "Done. $(ls -1 "$AGENTS_SKILLS_DIR" | wc -l | tr -d ' ') skills installed."
 ```
-
-## What It Does
-
-1. **Clones** the repository to a temporary directory (`--depth 1` for speed).
-2. **Copies** the `skills/` directory from the cloned repo to `~/.agents/skills/`.
-3. **Creates** `~/.claude/skills/` if missing.
-4. **Symlinks** each skill from `~/.agents/skills/` into `~/.claude/skills/`.
-5. **Cleans up** the temporary clone.
-6. **Is idempotent** — running it again cleans up old symlinks/directories and reinstalls cleanly.
-
-## Uninstall
-
-```bash
-rm -rf ~/.agents/skills ~/.claude/skills
-```
-
-## Notes for Harness Authors
-
-- The script requires `git` and SSH access to the repository. For HTTPS, change `REPO_URL` to `https://github.com/gdorsi/okpowers.git`.
-- If your harness already manages `~/.agents/skills/`, skip the clone/copy step and only do the symlink step.
-- Claude Code discovers skills in `~/.claude/skills/` automatically. No additional configuration is needed.
