@@ -125,6 +125,8 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 - `./spec-reviewer-prompt.md` - Dispatch spec compliance reviewer subagent
 - `./code-quality-reviewer-prompt.md` - Dispatch code quality reviewer subagent
 
+Always instruct subagents to use /caveman ultra
+
 ## Example Workflow
 
 ```
